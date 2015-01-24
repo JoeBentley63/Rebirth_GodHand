@@ -107,16 +107,23 @@
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\CameraLerp.cs" />
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\InstantiateObject.cs" />
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\Projectile.cs" />
-     <Compile Include="Assets\Scripts\HandController.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\Villager_Flocking_Script.cs" />
      <Compile Include="Assets\Scripts\Villager_Manager_Script.cs" />
+=======
+     <Compile Include="Assets\Scripts\HandController.cs" />
+>>>>>>> christy_branch
      <Compile Include="Assets\Scripts\Villager_Script.cs" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="LeapCSharp.NET3.5">
+<<<<<<< HEAD
+ <HintPath>C:/Users/student/Documents/source/Rebirth_GodHand/Rebirth_godhand/Assets/Plugins/LeapCSharp.NET3.5.dll</HintPath>
+=======
  <HintPath>C:/Users/student/projects/Rebirth_GodHand/Rebirth_godhand/Assets/Plugins/LeapCSharp.NET3.5.dll</HintPath>
+>>>>>>> christy_branch
  </Reference>
   </ItemGroup>
   <ItemGroup>

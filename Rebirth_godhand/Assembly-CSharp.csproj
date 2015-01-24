@@ -107,10 +107,10 @@
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\CameraLerp.cs" />
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\InstantiateObject.cs" />
      <Compile Include="Assets\Leap Motion\Scenes Pack\Scripts\Leap Scenes\Weapons\Projectile.cs" />
+     <Compile Include="Assets\Scripts\HandController.cs" />
      <Compile Include="Assets\Scripts\Villager_Flocking_Script.cs" />
      <Compile Include="Assets\Scripts\Villager_Manager_Script.cs" />
      <Compile Include="Assets\Scripts\Villager_Script.cs" />
-     <Compile Include="Assets\Scripts\HandController.cs" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

@@ -1,9 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{DB7BBD0B-6A1C-CBD8-C58F-CA711908FD02}") = "Rebirth_godhand", "Assembly-CSharp-firstpass.csproj", "{C4142E53-11BC-4F75-7599-1B75DD898681}"
+Project("{DB7BBD0B-6A1C-CBD8-C58F-CA711908FD02}") = "Rebirth_godhand", "Assembly-CSharp-firstpass-vs.csproj", "{C4142E53-11BC-4F75-7599-1B75DD898681}"
 EndProject
-Project("{DB7BBD0B-6A1C-CBD8-C58F-CA711908FD02}") = "Rebirth_godhand", "Assembly-CSharp.csproj", "{E059A61F-6D2D-629C-2933-306F6BAC29A5}"
+Project("{DB7BBD0B-6A1C-CBD8-C58F-CA711908FD02}") = "Rebirth_godhand", "Assembly-CSharp-vs.csproj", "{E059A61F-6D2D-629C-2933-306F6BAC29A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,7 +23,11 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
+										GlobalSection(MonoDevelopProperties) = preSolution
+=======
 					GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> christy_branch
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
