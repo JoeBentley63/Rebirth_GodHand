@@ -35,8 +35,47 @@ public class HandController : MonoBehaviour
 	{
 		//process the Leap message pump
 		LeapInputEx.Update();
+
+		for (int g = 0; g < LeapInputEx.Frame.Gestures().Count; g++) 
+		{
+			if (LeapInputEx.Frame.Gestures () [g].Type == Gesture.GestureType.TYPECIRCLE) 
+			{
+
+				Gesture gesture = LeapInputEx.Frame.Gestures () [g];
+				HandList hands = gesture.Hands;
+
+				UnityHand temp = new UnityHand ();
+
+
+				if (hands != null) 
+				{
+					bool undeterminedHand = true;
+					for (int i = 0; i < 2; i++) 
+					{
+						if ((unityHands [i]).hand != null && unityHands [i].hand.Id == hands [0].Id && unityHands [i].isHandDetermined) 
+						{
+							temp = unityHands [i];
+							undeterminedHand = false;
+						}
+					}
+
+					if (!undeterminedHand) 
+					{
+						RaycastHit hit;
+
+						if (Physics.Raycast (temp.transform.position, Vector3.down, out hit)) 
+						{
+							if (hit.collider.gameObject.CompareTag ("World")) 
+							{
+								cube.transform.position = hit.point;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
-	
+			
 	private void OnHandFound(Hand h)
 	{
 		Messenger.Broadcast<int>(SIG.HANDFOUND.ToString(), h.Id); //broadcast new hand ID to registered listeners
@@ -60,13 +99,30 @@ public class HandController : MonoBehaviour
 		if (undeterminedHand)
 			AssignHands(h);
 
-		RaycastHit hit;
 
+		/*bool palmGesture = true;
 
-		if (Physics.Raycast(temp.transform.position, Vector3.down, out hit))
+		for (int i = 0; i < h.Fingers.Count; i++) 
 		{
-			cube.transform.position = hit.point;
+			if(h.Fingers[i].Direction.y < 0f || h.Fingers[i].Direction.y > 0.4f)
+			{
+				palmGesture = false;
+			}
 		}
+
+		if (palmGesture) 
+		{
+			RaycastHit hit;
+
+
+			if (Physics.Raycast (temp.transform.position, Vector3.down, out hit)) 
+			{
+				if (hit.collider.gameObject.CompareTag ("World")) 
+				{
+					cube.transform.position = hit.point;
+				}
+			}
+		}*/
 	}
 	
 	private void OnHandLost(int Id)
