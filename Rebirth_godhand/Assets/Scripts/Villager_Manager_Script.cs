@@ -9,6 +9,9 @@ public class Villager_Manager_Script : MonoBehaviour {
 	public int initialPopulation;
 	public float spawnDelay;
 	float lastSpawn;
+	public Vector3 destination;
+	public float destinationArrivalDistance = 1;
+	public int numArrivedVillagers = 0;
 	// Use this for initialization
 	void Start () {
 		lastSpawn = Time.time;
@@ -17,6 +20,11 @@ public class Villager_Manager_Script : MonoBehaviour {
 			CreateNewVillage();
 		}
 	}
+
+	public void VillagerArrived()
+	{
+		numArrivedVillagers ++;
+	}
 	
 	void CreateNewVillage()
 	{
@@ -24,6 +32,22 @@ public class Villager_Manager_Script : MonoBehaviour {
 		population.Add (newVillager);
 	}
 	void Update () {
+
+		if (Input.GetMouseButtonDown (0)) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition) ; 
+			RaycastHit hit ;
+			
+			Debug.Log ("Click");
+			
+			if (Physics.Raycast (ray, out hit, 999f)) 
+			{
+				Debug.Log ("Hit");
+				Debug.Log(hit.point);
+				destination = hit.point;
+				numArrivedVillagers = 0;
+			}
+		}
+
 		if(Time.time - lastSpawn > spawnDelay)
 		{
 			lastSpawn = Time.time;

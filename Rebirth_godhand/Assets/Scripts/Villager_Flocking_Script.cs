@@ -11,11 +11,43 @@ public class Villager_Flocking_Script : MonoBehaviour {
 	public float alignmentStrenght;
 	public float cohesionStrenght;
 	public float seperationStrenght;
-	
+
+	public float movementStrenght;
+
+	public Vector3 destination;
+	public bool hasDestination = true;
+
+	bool isTouchingTheGround = false;
+	public float isTouchingGroundRayCastLenght;
+	public LayerMask groundLayerMask;
+
 	public LayerMask layerMask;
-	
+
+	public Villager_Manager_Script villagerManager;
+
+	void Start(){
+		villagerManager = GameObject.Find ("WorldManager").GetComponent<Villager_Manager_Script>();
+	}
+
 	void Update () {
-		this.rigidbody.velocity += (AlignmentBehaviour() *alignmentStrenght) + (CohesionBehaviour()*cohesionStrenght) + (SeperationBehaviour()*seperationStrenght);
+		if(rigidbody.velocity.magnitude > 1)
+		{
+			rigidbody.velocity = rigidbody.velocity.normalized * 1;
+		}
+		
+		
+		destination = villagerManager.destination;
+		isTouchingTheGround = Physics.Raycast (this.transform.position, -this.transform.up, isTouchingGroundRayCastLenght);
+		if (isTouchingTheGround) 
+		{
+			Vector3 velocity = this.rigidbody.velocity;
+			velocity += (AlignmentBehaviour () * alignmentStrenght) + 
+			(CohesionBehaviour () * cohesionStrenght) + 
+			(SeperationBehaviour () * seperationStrenght) + 
+			(MoveToDestinationBehaviour () * movementStrenght) ;
+
+			this.rigidbody.velocity = Vector3.Lerp(this.rigidbody.velocity, velocity, 1f);
+		}
 	}
 	
 	Vector3 AlignmentBehaviour(){
@@ -98,6 +130,27 @@ public class Villager_Flocking_Script : MonoBehaviour {
 		return velocityModifier;
 	}
 
+
+	Vector3 MoveToDestinationBehaviour(){
+		if (Vector3.Distance (this.transform.position, this.destination) < this.villagerManager.destinationArrivalDistance) 
+		{
+			this.villagerManager.VillagerArrived();
+		}
+		if (hasDestination)  
+		{
+			Vector3 moveDirection = (destination - this.gameObject.transform.position);
+			moveDirection.y = 0;
+			moveDirection.Normalize();
+			if(Vector3.Distance (this.transform.position, this.destination) < 3)
+			{
+
+			}
+			moveDirection *= (Vector3.Distance (this.transform.position, this.destination) /3);
+			return moveDirection;
+		}
+		return Vector3.zero;
+	}
+
 	void OnDrawGizmos(){
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere (transform.position,cohesionRadius);
@@ -107,6 +160,7 @@ public class Villager_Flocking_Script : MonoBehaviour {
 		Gizmos.DrawWireSphere (transform.position,alignmentRadius);
 		Gizmos.color = Color.white;
 		Gizmos.DrawWireSphere (transform.position,seperationRadius);
-
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine (this.transform.position, this.transform.position + (-this.transform.up * isTouchingGroundRayCastLenght));
 	}
 }
