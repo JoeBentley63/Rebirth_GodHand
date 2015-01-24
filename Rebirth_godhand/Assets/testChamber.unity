@@ -452,6 +452,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 7d576ff1f594b14488304c0376fa89bc, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d576ff1f594b14488304c0376fa89bc, type: 2}
   m_RootGameObject: {fileID: 703752212}
@@ -529,6 +533,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1446977531}
   - 114: {fileID: 1446977532}
+  - 114: {fileID: 1446977533}
   m_Layer: 0
   m_Name: _leapController
   m_TagString: Untagged
@@ -555,7 +560,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1086604284}
   m_GameObject: {fileID: 1446977530}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8551ef79edf138f48b575387e97857fd, type: 3}
   m_Name: 
@@ -572,6 +577,30 @@ MonoBehaviour:
     maxThrowingVelocity: 20
     maxAngularThrowingVelocity: 20
     leapPosOffset: {fileID: 703752213}
+--- !u!114 &1446977533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446977530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23db998e0933c549850049e682695f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unityHands:
+  - {fileID: 872833320}
+  - {fileID: 1628080238}
+  handSettings:
+    highlightObjects: 1
+    fingerDistanceMultiplier: 1
+    leapPosMultiplier: {x: 1, y: 1, z: 1}
+    throwingStrength: 20
+    angularStrength: .200000003
+    maxThrowingVelocity: 20
+    maxAngularThrowingVelocity: 20
+    leapPosOffset: {fileID: 0}
+  cube: {fileID: 882530585}
 --- !u!1 &1628080236
 GameObject:
   m_ObjectHideFlags: 0

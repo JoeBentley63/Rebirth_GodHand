@@ -45,12 +45,14 @@ public class HandController : MonoBehaviour
 	private void OnHandUpdated(Hand h)
 	{
 		bool undeterminedHand = true;
+		UnityHand temp = new UnityHand();
 		
 		for (int i = 0; i < 2; i++)
 		{
 			if ((unityHands[i]).hand != null && unityHands[i].hand.Id == h.Id && unityHands[i].isHandDetermined)
 			{
 				unityHands[i].hand = h; //update the state of unity hand
+				temp = unityHands[i];
 				undeterminedHand = false;
 			}
 		}
@@ -60,9 +62,10 @@ public class HandController : MonoBehaviour
 
 		RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+
+		if (Physics.Raycast(temp.transform.position, Vector3.down, out hit))
 		{
-			cube.transform.position = hit.transform.position;
+			cube.transform.position = hit.point;
 		}
 	}
 	
