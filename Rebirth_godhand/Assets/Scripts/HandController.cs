@@ -38,7 +38,7 @@ public class HandController : MonoBehaviour
 
 		for (int g = 0; g < LeapInputEx.Frame.Gestures().Count; g++) 
 		{
-			if (LeapInputEx.Frame.Gestures () [g].Type == Gesture.GestureType.TYPECIRCLE) 
+			if (LeapInputEx.Frame.Gestures () [g].Type == Gesture.GestureType.TYPEKEYTAP) 
 			{
 
 				Gesture gesture = LeapInputEx.Frame.Gestures () [g];
