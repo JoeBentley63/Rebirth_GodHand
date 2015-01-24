@@ -10,7 +10,7 @@ public class HandController : MonoBehaviour
 {
 	public UnityHand[] unityHands;
 	public UnityHandSettings handSettings;
-	public GameObject cube;
+	public GameObject villagerManager;
 	
 	private float timeVisible = 0.2f;
 	
@@ -38,7 +38,7 @@ public class HandController : MonoBehaviour
 
 		for (int g = 0; g < LeapInputEx.Frame.Gestures().Count; g++) 
 		{
-			if (LeapInputEx.Frame.Gestures () [g].Type == Gesture.GestureType.TYPEKEYTAP) 
+			if (LeapInputEx.Frame.Gestures () [g].Type == Gesture.GestureType.TYPECIRCLE) 
 			{
 
 				Gesture gesture = LeapInputEx.Frame.Gestures () [g];
@@ -67,7 +67,8 @@ public class HandController : MonoBehaviour
 						{
 							if (hit.collider.gameObject.CompareTag ("World")) 
 							{
-								cube.transform.position = hit.point;
+								villagerManager.GetComponent <Villager_Manager_Script>().destination = hit.point;
+								villagerManager.GetComponent <Villager_Manager_Script>().numArrivedVillagers = 0;
 							}
 						}
 					}
